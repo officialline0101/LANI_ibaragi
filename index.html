@@ -452,7 +452,7 @@
             <button type="button" onclick="selectSymptom(this, 'treatment17')" data-price="17600">髪質改善酸性矯正（カットなし）￥17,600</button>
             <button type="button" onclick="selectSymptom(this, 'treatment18')" data-price="3300">前髪縮毛矯正 ￥3,300</button>
             <button type="button" onclick="selectSymptom(this, 'treatment19')" data-price="2750">イーデス導入型トリートメント ￥2,750</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment20')" data-price="4400">ヘアセット（フルアップ）￥3,850</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment20')" data-price="4400">ホイップ泡コラーゲントリートメント ￥4,400</button>
             <button type="button" onclick="selectSymptom(this, 'treatment21')" data-price="3300">TOKIOトリートメント ￥3,300</button>
             <button type="button" onclick="selectSymptom(this, 'treatment22')" data-price="3850">ヘアセット（フルアップ）￥3,850</button>
             <button type="button" onclick="selectSymptom(this, 'treatment23')" data-price="3300">ハーフアップセット ￥3,300</button>
@@ -461,8 +461,8 @@
             <button type="button" onclick="selectSymptom(this, 'treatment26')" data-price="2750">ヴィージェ野菜スパ ￥2,750</button>
             <button type="button" onclick="selectSymptom(this, 'treatment27')" data-price="5500">TOKIOヘットスパ＆トリートメント ￥5,500</button>
             <button type="button" onclick="selectSymptom(this, 'treatment28')" data-price="1100">眉カット（メンズ）￥1,100</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment29')" data-price="13200">カット&リタッチ ￥11,000</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment30')" data-price="11000">カット&パーマ ￥14,300</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment29')" data-price="13200">カット&カラー ￥13,200</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment30')" data-price="11000">カット&リタッチ ￥11,000</button>
             <button type="button" onclick="selectSymptom(this, 'treatment31')" data-price="14300">カット&パーマ ￥14,300</button>
             <button type="button" onclick="selectSymptom(this, 'treatment32')" data-price="18700">カット&縮毛矯正 ￥18,700</button>
             <button type="button" onclick="selectSymptom(this, 'treatment33')" data-price="22000">カット＆髪質改善酸性矯正 ￥22,000</button>
@@ -683,7 +683,7 @@
             // 選択されたオプションを取得
             const updatedSelectedButtons = document.querySelectorAll('.symptoms button.active');
             selectedMenu = Array.from(updatedSelectedButtons).map(btn => btn.textContent.trim());
-            selectedSymptom = selectedMenu.join('、 ');
+            const selectedSymptomText = selectedMenuArray.join(', '); // カンマ区切りで文字列に変換
 
             // メニュー時間と価格をリセット
             selectedMenuTime = 0;
@@ -752,7 +752,7 @@
             // 選択されたオプションを取得
             const selectedButtons = document.querySelectorAll('.irradiations button.active');
             const selectedIrradiations = Array.from(selectedButtons).map(btn => btn.innerText);
-            irradiationsCount = selectedIrradiations.join('、 ');
+            irradiationsCount = selectedIrradiations.join(', ');
 
             // すべてのオプションの価格を再計算
             optionsPrice = 0; // 全体をリセットして再計算
@@ -863,7 +863,7 @@
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\n茨木店\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${formData.selectedSymptom}、${formData.irradiationsCount}\n希望日時：\n ${formData.dates[0]}\nメッセージ：${formData.message}`
+                text: `【予約フォーム】\n茨木店\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${formData.selectedSymptom}\n希望日時：\n ${formData.dates[0]}\nメッセージ：${formData.message}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('当日キャンセルは無いようにお願いいたします。キャンセル料発生いたします。');
