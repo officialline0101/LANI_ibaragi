@@ -977,10 +977,24 @@
             // 現在の日時を取得
             const now = new Date();
 
+// 1か月後の日時を計算
+const oneMonthLater = new Date();
+oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+
             // テーブルの内容を更新
             for (let i = 0; i < 7; i++) {
                 const day = new Date(currentDate);
                 day.setDate(day.getDate() + i);
+
+                    // 1か月後より後の日付の場合は✕を設定
+    if (day > oneMonthLater) {
+        for (let j = 0; j < times.length; j++) {
+            const cell = table.rows[j].cells[i + 1];
+            cell.textContent = '✕';
+            cell.classList.add('unavailable');
+        }
+        continue; // 次の日付にスキップ
+    }
 
                 let businessEventTimes = []; // 営業日のイベント時間帯を記録する配列
 
