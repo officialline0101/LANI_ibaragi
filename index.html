@@ -653,7 +653,7 @@
 
             // オプションが選択されていたら、各オプションを改行して表示
             const irradiationsText = irradiationsCount
-                ? `<span style="color:#45c4b7;"><strong>【オプション】</strong></span><br>・${irradiationsCount.split(', ').join('<br>・')}`
+                ? `<span style="color:#45c4b7;"><strong>【オプション】</strong></span><br>・${irradiationsCount.split('、 ').join('<br>・')}`
                 : '・オプション無し';
 
             // 所要時間を計算
